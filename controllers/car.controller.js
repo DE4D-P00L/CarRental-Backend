@@ -39,6 +39,21 @@ export const getFilteredCars = async (req, res) => {
   }
 };
 
-getFilteredCars;
-
-export const getCarById = (req, res) => {};
+export const getCarById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const car = await Car.findById(id);
+    res.status(200).json({
+      message: "Car Found!",
+      success: true,
+      car,
+    });
+  } catch (error) {
+    console.log("Error in login Controller", error.message);
+    res.status(500).json({
+      message: "Internal Server Error",
+      success: false,
+      error: error.message,
+    });
+  }
+};
