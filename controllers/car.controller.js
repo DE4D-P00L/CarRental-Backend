@@ -57,3 +57,37 @@ export const getCarById = async (req, res) => {
     });
   }
 };
+
+export const editCar = async (req, res) => {
+  const { id } = req.params;
+  const { model, vehicleNumber, capacity, rent, features } = req.body;
+  const featuresArray = features.split(",");
+  const carImgLocalPath = req.file?.path;
+  try {
+    const vehicleImageObjectURL = await uploadOnCloudinary(carImgLocalPath);
+    const car = await Car.findByIdAndUpdate(
+      id,
+      {
+        model,
+        vehicleNumber,
+        capacity,
+        rent,
+        features: featuresArray || "",
+        vehicleImage: vehicleImageObjectURL || "",
+      },
+      { new: true }
+    );
+    res.status(200).json({
+      message: "Car Updated!",
+      success: true,
+      car,
+    });
+  } catch (error) {
+    console.log("Error in login Controller", error.message);
+    res.status(500).json({
+      message: "Internal Server Error",
+      success: false,
+      error: error.message,
+    });
+  }
+};
