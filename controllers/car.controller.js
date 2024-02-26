@@ -1,5 +1,5 @@
 import Car from "../models/Car.js";
-
+import {uploadOnCloudinary} from "../utils/cloudinaty.js"
 export const getAllCars = async (req, res) => {
   try {
     const cars = await Car.find({});
