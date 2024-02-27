@@ -15,7 +15,6 @@ const router = express.Router();
 router.post("/login", login);
 router.post("/signup", signup);
 router.post("/add-car", verifyAgency, upload.single("carImage"), addCar);
-// TODO: add delete and update car actions
 router.get("/all-cars", verifyAgency, allCars);
 router.post("/edit-car/:id", verifyAgency, upload.single("carImage"), editCar);
 router.get("/orders", verifyAgency, showRentalOrders);

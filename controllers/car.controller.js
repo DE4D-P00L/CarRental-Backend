@@ -1,5 +1,5 @@
 import Car from "../models/Car.js";
-import {uploadOnCloudinary} from "../utils/cloudinary.js"
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
 export const getAllCars = async (req, res) => {
   try {
     const cars = await Car.find({});
@@ -72,8 +72,8 @@ export const editCar = async (req, res) => {
         vehicleNumber,
         capacity,
         rent,
-        features: featuresArray || "",
-        vehicleImage: vehicleImageObjectURL || "",
+        features: featuresArray,
+        vehicleImage: vehicleImageObjectURL,
       },
       { new: true }
     );
