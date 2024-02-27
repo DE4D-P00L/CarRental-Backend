@@ -65,18 +65,20 @@ export const editCar = async (req, res) => {
   const carImgLocalPath = req.file?.path;
   try {
     const vehicleImageObjectURL = await uploadOnCloudinary(carImgLocalPath);
-    const car = await Car.findByIdAndUpdate(
-      id,
-      {
-        model,
-        vehicleNumber,
-        capacity,
-        rent,
-        features: featuresArray,
-        vehicleImage: vehicleImageObjectURL,
-      },
-      { new: true }
-    );
+
+    const updateData = {
+      model,
+      vehicleNumber,
+      capacity,
+      rent,
+      features: featuresArray,
+    };
+
+    if (carImgLocalPath) {
+      updateData["vehicleImage"] = vehicleImageObjectURL;
+    }
+
+    const car = await Car.findByIdAndUpdate(id, updateData, { new: true });
     res.status(200).json({
       message: "Car Updated!",
       success: true,
