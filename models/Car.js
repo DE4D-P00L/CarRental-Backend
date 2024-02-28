@@ -26,8 +26,14 @@ const carSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Vehicle rent is required"],
     },
-    rentStart: { type: Date, default: new Date() },
-    rentEnd: { type: Date, default: new Date() },
+    rentStart: {
+      type: Date,
+      default: new Date(new Date().setDate(new Date().getDate() - 1)),
+    },
+    rentEnd: {
+      type: Date,
+      default: new Date(new Date().setDate(new Date().getDate() - 1)),
+    },
     features: [String],
   },
   { timestamps: true }
