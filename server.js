@@ -6,6 +6,7 @@ import userRoutes from "./routes/user.routes.js";
 import agencyUserRoutes from "./routes/agencyUser.routes.js";
 import carRoutes from "./routes/car.routes.js";
 import rentalRoutes from "./routes/rental.routes.js";
+import paymentRoutes from "./routes/payment.routes.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 //routes
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/car", carRoutes);
+app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/rental", rentalRoutes);
 app.use("/api/v1/agency", agencyUserRoutes);
 

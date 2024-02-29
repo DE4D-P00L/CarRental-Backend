@@ -29,6 +29,7 @@ const rentalSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    order_id: String,
   },
   { timestamps: true }
 );

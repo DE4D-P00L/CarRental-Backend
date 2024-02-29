@@ -4,6 +4,7 @@ import Rental from "../models/Rental.js";
 import Car from "../models/Car.js";
 import isValidEmail from "../utils/verifyEmail.js";
 import mongoose from "mongoose";
+import Payment from "../models/Payment.js";
 
 export const login = async (req, res) => {
   try {
@@ -167,7 +168,7 @@ export const showRentalHistory = async (req, res) => {
 
 export const rentCar = async (req, res) => {
   const { user } = req;
-  const { carId, agencyId, startDate, endDate, price } = req.body;
+  const { carId, agencyId, startDate, endDate, price, order_id } = req.body;
   const session = await mongoose.startSession();
   try {
     session.startTransaction();
@@ -178,6 +179,7 @@ export const rentCar = async (req, res) => {
       startDate,
       endDate,
       price,
+      order_id,
     });
 
     const car = await Car.findById(carId);

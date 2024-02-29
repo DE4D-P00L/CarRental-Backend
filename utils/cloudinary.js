@@ -16,7 +16,7 @@ const uploadOnCloudinary = async (filePath) => {
     console.log("Image uploaded successfully", response.secure_url);
     // TODO: add url
     fs.unlinkSync(filePath);
-    return response.secure_url;
+    return response?.secure_url;
   } catch (error) {
     fs.unlinkSync(filePath);
     console.log(error);
