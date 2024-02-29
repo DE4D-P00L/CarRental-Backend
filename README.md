@@ -8,7 +8,7 @@ This repository showcases a MERN stack car rental website built with React and V
 
 - **Search and filter cars:** Search for cars based on various criteria, including model, capacity, availability, and other features.
 - **User accounts:** Register and login to manage rental bookings and view past rentals.
-- **Booking system:** Select dates, choose a car, and submit a booking request.
+- **Booking system:** Select dates, choose a car and pay rent to submit a booking request.
 - **Admin panel:** Manage car inventory, add new cars, and review rental requests.
 - **Responsive design:** Adapts seamlessly to different screen sizes.
 
@@ -25,12 +25,14 @@ This repository showcases a MERN stack car rental website built with React and V
   - react-router-dom
   - react-icons
   - react-hook-form
+  - RazorPay
 - **Backend:**
   - Express.js
   - Mongoose
   - Multer
   - Cloudinary
   - Jsonwebtoken
+  - RazorPay
 - **Database:** MongoDB
 
 ### Getting Started
@@ -56,6 +58,9 @@ npm install
 - CLOUDINARY_API_KEY: Your Cloudinary API key
 - CLOUDINARY_API_SECRET: Your Cloudinary API secret
 - JWT_SECRET: Your JWT secret
+- RZP_ID: Your RazorPay Key
+- RZP_SECRET: Your RazorPay Secret
+- FRONTEND_URL: Frontend URL
 
 4. Create a `.env` file in the Frontend and add the following environment variables:
 
